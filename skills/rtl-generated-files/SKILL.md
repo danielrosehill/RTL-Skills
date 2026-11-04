@@ -42,7 +42,8 @@ and is marked where unverified.
 
 ## PDF
 
-- **Easiest correct route:** write HTML with `dir="rtl"` on every block and convert
+- **Best route where a shell is available:** the `write-rtl-document` skill (Typst).
+- **Otherwise:** write HTML with `dir="rtl"` on every block and convert
   it with a renderer that handles bidi text (a browser engine, or WeasyPrint). Or,
   where you have it, use Typst or LaTeX (XeLaTeX with polyglossia/bidi).
 - With reportlab or fpdf, reorder each line yourself before drawing

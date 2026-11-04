@@ -1,6 +1,6 @@
 ---
 name: rtl-email
-description: Send or draft email whose body is in Hebrew, Arabic, Farsi or Urdu so it renders right-to-left in every mail client (Gmail, Outlook, Apple Mail), through any email tool (Gmail, Resend or another provider). Use whenever an email body, or a substantial part of it, is in an RTL script, including short replies, and before saving a Hebrew draft.
+description: Send or draft email whose body is in Hebrew, Arabic, Farsi or Urdu so it renders right-to-left in every mail client (Gmail, Outlook, Apple Mail), through any email tool (Gmail, Resend or another provider). Use whenever an email body, or a substantial part of it, is in an RTL script, including short replies. Rules for any tool; to send signed mail use send-rtl-personal-email or send-rtl-business-email, and for mailings write-rtl-newsletter.
 ---
 
 # RTL email

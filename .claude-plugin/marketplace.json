@@ -1,13 +1,16 @@
 {
   "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
-  "name": "rtl-conformity",
-  "owner": { "name": "Daniel Rosehill", "url": "https://github.com/danielrosehill" },
+  "name": "rtl-skills",
+  "owner": {
+    "name": "Daniel Rosehill",
+    "url": "https://github.com/danielrosehill"
+  },
   "plugins": [
     {
-      "name": "rtl-conformity",
+      "name": "rtl-skills",
       "source": "./",
-      "description": "Right-to-left conformity skills for email, Google Workspace, calendar and generated files.",
-      "version": "0.1.0"
+      "description": "Everything right-to-left in one plugin: Hebrew, Arabic, Farsi and Urdu email, Typst PDFs and formal Hebrew letters, HTML marketing newsletters, Google Docs and Sheets, calendar events, Word and Excel files, and render checks. Your signatures, brands and house styles stay in a private user-data folder.",
+      "version": "1.0.0"
     }
   ]
 }

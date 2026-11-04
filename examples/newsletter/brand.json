@@ -1,0 +1,8 @@
+{
+  "name": "חברת דוגמה בע\"מ",
+  "accent": "#0b6e4f",
+  "address": "רחוב הדוגמה 1, עיר הדוגמה",
+  "contact_email": "hello@example.com",
+  "unsubscribe_url": "https://example.com/unsubscribe",
+  "unsubscribe_email": "remove@example.com"
+}

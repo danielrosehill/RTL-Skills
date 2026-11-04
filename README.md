@@ -1,55 +1,62 @@
-# RTL Conformity Skills
+# RTL Skills
 
-Agent skills that keep Hebrew, Arabic, Farsi and Urdu text right-to-left on every
-surface an AI agent writes to. Wrong direction never raises an error: the tool call
-succeeds and the text is all there, but it reads left-to-right and phone numbers,
-dates and account numbers come out reordered. These skills tell the agent which
-switch to set on each surface, and how to check it took.
+Everything right-to-left for AI agents, in one plugin: email, PDFs, letters,
+newsletters, Google Workspace, calendar and generated files, in Hebrew, Arabic, Farsi
+and Urdu.
 
-Instruction-only (no MCP server, no scripts). The same files work in **Claude**
-(Claude Code, Cowork, claude.ai) and **ChatGPT** (Business/Enterprise plugin
-marketplaces import this Claude-format layout as-is).
+Wrong direction never raises an error. The tool call succeeds, the text is all there,
+and it reads left-to-right with phone numbers and account references reordered. These
+skills set the right switch on each surface and check that it took.
 
-| Skill | Covers |
+## Skills
+
+| Skill | Does |
 |---|---|
-| `rtl-basics` | The core rules: explicit direction per block, isolating multi-part numbers, RLM marks, fonts, read-back. Israeli conventions for dates, currency, phone and ID numbers, and the formal/informal register split. |
-| `rtl-email` | HTML bodies with `dir="rtl"` on every block, per-tool notes for Gmail-style tools and Resend, the escaped-HTML failure, plain-text fallback, subjects, read-back after sending. |
-| `rtl-google-workspace` | Google Docs paragraph direction (defaults to LTR and is not inherited), RTL sheets and cells in Sheets, Slides paragraphs, Hebrew file and folder names in Drive. |
-| `rtl-calendar` | Event titles, descriptions and locations in Hebrew; `Asia/Jerusalem` time zone, day-first dates, Shabbat and holidays. |
-| `rtl-generated-files` | Word (`w:bidi`/`w:rtl`), PDF, Excel (`rightToLeft`, `readingOrder`), CSV with a BOM, matplotlib charts, and the reversed-text and font-substitution failures. |
+| `setup-rtl` | Checks the toolchain and saves your signatures, sender details and brands |
+| `write-rtl-document` | Report, memo, brief or one-pager to PDF with Typst |
+| `write-hebrew-letter` | Formal Hebrew letter to PDF: David Libre, dual dating, addressee and subject blocks |
+| `write-rtl-newsletter` | Marketing email or newsletter as table-based RTL HTML, with a lint and Israeli advertising checklist |
+| `send-rtl-personal-email` | Personal RTL email, signed from your profile |
+| `send-rtl-business-email` | Formal RTL email, signed from your profile |
+| `read-rtl-correspondence` | Incoming `.eml` or `.mbox` to a threaded PDF or Markdown |
+| `verify-rtl-render` | Catches the silent font substitutions a Typst exit code hides |
+| `rtl-basics` | Core rules: direction per block, isolating numbers, Israeli conventions |
+| `rtl-email` | Email rules for any mail tool |
+| `rtl-google-workspace` | Docs, Sheets, Slides and Drive |
+| `rtl-calendar` | Calendar events |
+| `rtl-generated-files` | Word, PDF, Excel, CSV and charts |
 
-Skills refer to tools by capability ("your email tool"), never by a vendor's tool
-name, so they work with whichever Gmail, Drive, Calendar or Resend integration the
-agent has.
+The `rtl-*` rule skills are instruction-only and also work in ChatGPT. The others need
+a shell.
+
+## Your private settings
+
+The plugin ships no personal data. Signatures, letter sender details, newsletter brands
+and house styles live in a folder of your own, by default
+`~/.claude-user-data/rtl-skills/`, and override the built-ins by file name. It survives
+updates and can be a private git repo. See
+[`references/user-data.md`](references/user-data.md).
 
 ## Install
 
-**Claude Code:**
-
 ```
-/plugin marketplace add danielrosehill/RTL-Conformity-Skills
-/plugin install rtl-conformity@rtl-conformity
+/plugin marketplace add danielrosehill/RTL-Skills
+/plugin install rtl-skills@rtl-skills
 ```
 
-**ChatGPT Business / Enterprise:** in *Admin console → Plugins → Marketplaces*, add
-this repository as a marketplace source, or vendor `skills/` and `.claude-plugin/`
-into an existing marketplace repository.
+Then run `setup-rtl`. Documents and letters need Typst and `poppler-utils`. Newsletter
+and email previews need a Chromium-family browser.
 
-## Provenance
+## Why `verify-rtl-render` exists
 
-Grew out of [Claude-RTL-Email](https://github.com/danielrosehill/Claude-RTL-Email),
-which sends RTL email with saved signature profiles and local preview scripts, and
-[Claude-Hebrew-Correspondence-Plugin](https://github.com/danielrosehill/Claude-Hebrew-Correspondence-Plugin)
-(typeset Hebrew letters). This repo carries their portable rules without the local
-tooling, and extends them to Docs, Sheets, Slides, Drive, Calendar and generated files.
+Typst emits `warning: unknown font family: david libre` and compiles anyway, with a
+Latin font that has no Hebrew. The exit code is 0 and the PDF still extracts every
+Hebrew codepoint, so only the embedded font list shows it. See
+[`references/fonts-and-rendering.md`](references/fonts-and-rendering.md).
 
-Verified on 2026-10-16: the Google Docs, Sheets and Slides direction fields (from
-Google's API discovery documents), and the openpyxl, python-docx and python-bidi
-calls quoted in `rtl-generated-files`. Email behaviour comes from the Claude-RTL-Email
-tests (Chromium renders, 2026-08-05; a real send, 2026-09-01). Outlook behaviour and
-which HTML Google Calendar keeps in descriptions are established practice, not
-tested here. Each skill says which is which.
+## Credits
 
-## License
+David Libre is included under the SIL Open Font License 1.1. The letter template comes
+from [Typst-Hebrew-Letter](https://github.com/danielrosehill/Typst-Hebrew-Letter).
 
-MIT
+MIT licence.

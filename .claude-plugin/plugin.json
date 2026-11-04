@@ -1,23 +1,42 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
-  "name": "rtl-conformity",
-  "version": "0.1.0",
-  "description": "Right-to-left conformity for Hebrew, Arabic, Farsi and Urdu across every surface an agent writes to: email (Gmail, Resend), Google Docs, Sheets, Slides and Drive, calendar events, and generated files (Word, PDF, Excel, CSV, charts). Explicit direction, isolated numbers and dates, Israeli formatting conventions, and read-back checks for failures that never raise an error. Instruction-only; works in Claude and ChatGPT.",
+  "name": "rtl-skills",
+  "version": "1.0.0",
+  "description": "Everything right-to-left in one plugin: Hebrew, Arabic, Farsi and Urdu email, Typst PDFs and formal Hebrew letters, HTML marketing newsletters, Google Docs and Sheets, calendar events, Word and Excel files, and render checks. Your signatures, brands and house styles stay in a private user-data folder.",
   "author": {
     "name": "Daniel Rosehill",
     "url": "https://github.com/danielrosehill"
   },
-  "repository": "https://github.com/danielrosehill/RTL-Conformity-Skills",
+  "repository": "https://github.com/danielrosehill/RTL-Skills",
   "license": "MIT",
-  "keywords": ["rtl", "hebrew", "arabic", "bidi", "email", "google-docs", "google-sheets", "calendar", "docx", "pdf", "i18n"],
+  "keywords": [
+    "arabic",
+    "bidi",
+    "calendar",
+    "david-libre",
+    "docx",
+    "email",
+    "google-docs",
+    "google-sheets",
+    "hebrew",
+    "i18n",
+    "israel",
+    "newsletter",
+    "pdf",
+    "rtl",
+    "typst"
+  ],
   "extensions": {
     "com.openai": {
       "interface": {
-        "displayName": "RTL Conformity",
+        "displayName": "RTL Skills",
         "shortDescription": "Hebrew that stays right-to-left everywhere",
         "developerName": "Daniel Rosehill",
         "category": "Productivity",
-        "capabilities": ["Read", "Write"],
+        "capabilities": [
+          "Read",
+          "Write"
+        ],
         "defaultPrompt": [
           "Write this email to the bank in Hebrew",
           "Make a Hebrew Google Doc of these notes"

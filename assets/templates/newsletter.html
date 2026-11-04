@@ -1,0 +1,41 @@
+<!doctype html>
+<!--
+  newsletter.html: RTL marketing or newsletter email, built by
+  scripts/build_newsletter.py. Not for one-to-one mail: use base.html or
+  formal.html, because a centred card reads as a mailing.
+
+  dir="rtl" is repeated on html, body, every table and every td on purpose.
+  Many sending platforms strip or rewrite <html> and <body>, and Outlook's Word
+  engine ignores inherited direction. align="right" backs up text-align for the
+  same reason. Layout is tables because Outlook has no working flexbox.
+
+  A copy at <data dir>/templates/newsletter.html replaces this file. Keep the
+  placeholders. Section markup lives in build_newsletter.py.
+-->
+<html lang="{{LANG}}" dir="rtl" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>{{SUBJECT}}</title>
+<style>
+  @media (max-width:620px){
+    .nl-card{width:100%!important}
+    .nl-pad{padding-left:20px!important;padding-right:20px!important}
+    .nl-img{width:100%!important;height:auto!important}
+  }
+</style>
+</head>
+<body dir="rtl" style="margin:0;padding:0;background:#f2f3f5;direction:rtl;">
+<div style="display:none;max-height:0;overflow:hidden;opacity:0;" dir="rtl">{{PREHEADER}}</div>
+<table role="presentation" dir="rtl" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#f2f3f5;">
+<tr><td dir="rtl" align="center" style="padding:24px 8px;">
+  <table role="presentation" dir="rtl" class="nl-card" width="600" cellpadding="0" cellspacing="0" border="0" style="width:600px;max-width:600px;background:#ffffff;border-top:4px solid {{ACCENT}};">
+    <tr><td dir="rtl" align="right" class="nl-pad" style="padding:24px 32px 8px;direction:rtl;text-align:right;font-family:{{FONT_STACK}};">{{MASTHEAD_HTML}}</td></tr>
+{{SECTIONS_HTML}}
+    <tr><td dir="rtl" align="right" class="nl-pad" style="padding:20px 32px 28px;border-top:1px solid #e3e5e8;direction:rtl;text-align:right;font-family:{{FONT_STACK}};font-size:13px;line-height:1.7;color:#5a6270;">{{FOOTER_HTML}}</td></tr>
+  </table>
+</td></tr>
+</table>
+</body>
+</html>
