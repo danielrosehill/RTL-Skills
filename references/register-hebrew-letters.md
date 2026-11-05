@@ -51,4 +51,5 @@ Wrap bare identifiers in `<bdi>` in HTML, or rely on the isolate handling in
 ## Dating
 
 Formal letters carry both Hebrew and Gregorian dates. The Typst template does
-this; the `hebcal` MCP converts if you need the Hebrew date separately.
+this; for the Hebrew date alone use `https://www.hebcal.com/converter?cfg=json&date=YYYY-MM-DD&g2h=1&strict=1`
+(public, no key).
