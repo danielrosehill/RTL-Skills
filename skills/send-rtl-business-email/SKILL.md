@@ -42,7 +42,8 @@ Follow `references/composing.md`. In summary:
 6. Preview with `./scripts/preview.sh`. **Check every identifier character by
    character against the source**, then show the render to the user before
    sending anything formal.
-7. Send with **`body_format: "html"`** (Gmail) or as `html` (Resend).
+7. Send through the Gmail API with **`body_format: "html"`**. Only if Gmail fails,
+   send through Resend as `html`.
    **On Resend, BCC the profile's own email address** on every message unless it is
    already a recipient. Resend sends never appear in a Gmail Sent folder, so the BCC
    is the user's only copy to proof the render.

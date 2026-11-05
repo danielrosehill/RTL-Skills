@@ -42,8 +42,8 @@ with the business variant. In summary:
 4. `dir="rtl"` on every block; `<span dir="ltr">` around every multi-part number.
    See `references/bidi-rules.md`.
 5. Preview with `./scripts/preview.sh` and look at it.
-6. Send with **`body_format: "html"`** (Gmail) or as `html` (Resend). Omitting
-   it undoes everything above.
+6. Send through the Gmail API with **`body_format: "html"`**. Omitting it undoes
+   everything above. Only if Gmail fails, send through Resend as `html`.
    **On Resend, BCC the profile's own email address** on every message unless it is
    already a recipient. Resend sends never appear in a Gmail Sent folder, so the BCC
    is the user's only copy to proof the render.

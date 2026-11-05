@@ -84,13 +84,15 @@ the user before sending.
 
 ## 6. Send
 
+**Gmail API first. Resend only if Gmail fails**, and say the route changed.
+
 **Google Workspace MCP (Gmail).** Tool names vary by server build; commonly
 `send_gmail_message`. Pass the substituted HTML as `body` and — the whole point —
 **`body_format: "html"`**. Omitting it sends plain text and undoes everything
 above. Include `to`, `subject`, and `user_google_email` if the server requires
 it.
 
-**Resend MCP.** Pass the substituted template as `html`. Resend never
+**Resend MCP (fallback).** Pass the substituted template as `html`. Resend never
 auto-appends a signature, so the profile's signature must be filled in.
 
 **Attachments.** Both transports generally accept a server-side-fetched URL as

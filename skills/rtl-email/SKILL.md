@@ -43,6 +43,8 @@ HTML body is a literal `<`.**
 
 ## Per tool
 
+**Route: the Gmail API first. Use Resend only if Gmail fails**, and say the route changed.
+
 - **Gmail-style tools:** pass the HTML as the body and set the body format or
   content type to HTML (often a parameter like `body_format: "html"` or
   `mimeType: text/html`). Leaving it out sends your markup as plain text, which is
