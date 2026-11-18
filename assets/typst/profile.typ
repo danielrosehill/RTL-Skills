@@ -156,12 +156,29 @@
 
 // Sign-off. `ref` is your own reference — the one you want quoted back at you —
 // and is omitted when a letter opens a correspondence rather than continuing one.
-#let signature(name: none, ref: none, labels: (:), is-rtl: false) = {
+//
+// A handwritten signature image goes above the name when one is supplied, either as
+// `image-path` or at build time with `--input sig=<file>`. The file must sit inside
+// the Typst --root (stage it next to the .typ files). A PNG with a transparent
+// background reads best. Without one, the gap is left blank for a wet signature.
+#let signature(
+  name: none,
+  ref: none,
+  labels: (:),
+  is-rtl: false,
+  image-path: sys.inputs.at("sig", default: none),
+) = {
   block(breakable: false)[
     #set text(dir: if is-rtl { rtl } else { ltr })
     #labels.regards
 
-    #v(18pt)
+    #if image-path != none {
+      v(4pt)
+      image(image-path, height: 1.4cm)
+      v(-2pt)
+    } else {
+      v(18pt)
+    }
 
     #text(weight: "bold", size: 11pt)[#if name == none {
       if is-rtl { sender.name-he } else { sender.name }

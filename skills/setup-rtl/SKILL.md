@@ -38,6 +38,7 @@ expect, and more can be added.
 | `signature_html` | Rendered signature. Ask whether it should be Latin or RTL script. A Latin signature under an RTL body is normal, but it's the user's call |
 | `identifiers` | Business, optional: label/value pairs such as company or VAT number |
 | `org`, `org_rtl` | Business only |
+| `handwritten_signature` | Optional: map of `he` / `he_full` / `en` to absolute paths of signature images (transparent PNG), used to sign PDFs |
 | `ai_line` | Optional AI-assistance note in the profile's language, added after the signature |
 
 ```json

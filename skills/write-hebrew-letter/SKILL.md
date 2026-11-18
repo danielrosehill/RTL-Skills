@@ -21,6 +21,14 @@ typst compile --root . --font-path ${CLAUDE_PLUGIN_ROOT}/assets/fonts letter-he.
 Latin serif that has no Hebrew coverage, and compiles successfully. See
 `references/fonts-and-rendering.md`.
 
+### Handwritten signature (optional)
+
+If the profile in `<data dir>/config.json` has `handwritten_signature`, copy the image for
+the letter's language (`he`, or `he_full` for the full name) into the working directory
+as `signature.png` and add `--input sig=signature.png` to the compile. The template puts
+it above the signed name. Don't copy the image into a public repo, and don't commit the
+built PDF if it carries an ID number.
+
 Then always:
 
 ```bash

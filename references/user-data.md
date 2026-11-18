@@ -20,6 +20,12 @@ then `~/.claude-user-data/rtl-skills`. Never write under `~/.claude/`.
 └── notes.md           # your own rules; skills read it when present
 ```
 
+Optional per profile in `config.json`: `handwritten_signature`, a map from a key to an
+absolute path of a signature image. The keys are `he` (the default for Hebrew
+documents), `he_full` (the full name) and `en` (Latin script). The images stay wherever
+the user keeps them, for example a private repo. Skills copy one into the build
+directory when they sign a PDF.
+
 - `paths.sh file templates/newsletter.html` gives the winning path.
 - `paths.sh list brands` lists brands; `paths.sh list templates` lists templates.
 - `paths.sh stage-typst <dir>` copies the built-in `.typ` files into a working
