@@ -40,13 +40,16 @@ Follow `references/composing.md`. In summary:
    Whoever reads it first is often deciding which desk it goes to. The body must
    carry the subject, the identifier and the request on its own.
 6. Preview with `./scripts/preview.sh`. **Check every identifier character by
-   character against the source**, then show the render to the user before
-   sending anything formal.
+   character against the source**, then send. Do not show the render to the user
+   first unless they asked to review; an identifier that does not match the source
+   is a blocker.
 7. Send through the Gmail API with **`body_format: "html"`**. Only if Gmail fails,
    send through Resend as `html`.
    **On Resend, BCC the profile's own email address** on every message unless it is
    already a recipient. Resend sends never appear in a Gmail Sent folder, so the BCC
    is the user's only copy to proof the render.
+
+8. **Sending:** follow `rtl-email` "Sending": send when what to say is clear, no draft or confirmation step unless the user asked to review; blockers are an unverified address, a fact only the user can supply, a leftover placeholder. Then read the sent message back (below) and report recipient, subject and message id in one line.
 
 ## Do not
 
@@ -55,7 +58,7 @@ Follow `references/composing.md`. In summary:
   `&lt;div dir="rtl"&gt;`. Escaped markup sends without error and renders as
   visible tags in the recipient's window. This has happened in real
   correspondence — see `references/composing.md`.
-- **Send anything formal without reading the message back.** One
+- **Send anything without reading the message back** (`dir` attributes survived, numbers, dates, phones and URLs in order; if broken, fix and resend). One
   `get_gmail_message_content` call on the returned ID catches both the
   escaping bug and a dropped `body_format` in ten seconds.
 - Let a number with internal separators sit unwrapped in RTL text.

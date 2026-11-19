@@ -53,10 +53,14 @@ HTML body is a literal `<`.**
   fill it with the plain-text fallback below. Resend never adds a signature, so
   include one.
 - **A tool that only accepts plain text:** tell the user it cannot send correctly
-  laid-out Hebrew. Offer to save a draft for them to send from their mail app, or to
-  use a different tool. If they still want plain text, use the fallback below.
-- **Drafts:** the same rules apply. A Hebrew draft saved as plain text opens
+  laid-out Hebrew, and use a different tool. Save a draft for them to send from their
+  mail app only if they ask for a draft. If they still want plain text, use the fallback below.
+- **Drafts (only when the user asks for one):** the same rules apply. A Hebrew draft saved as plain text opens
   left-to-right in the composer.
+
+## Sending
+
+**Sending.** When the user asks for an email, or a task they gave calls for one, and what to say is clear, send it: formal, official, funder, job-application and pitch mail included. No draft, no "show the user first" step, no Send/Edit menu, no draft left behind. Hold for review only when the user asks ("draft it", "show me first", "let me review", "don't send"). Real blockers still stop a send: no verified address, a fact only the user can supply, a leftover placeholder. After sending, give the user one line: recipient, subject, message id.
 
 ## Plain-text fallback
 
@@ -72,14 +76,15 @@ it still displays the wrong way round, prefix U+200F.
 
 ## After sending
 
-For anything formal (a bank, health fund, municipality, landlord, employer) or
-anything quoting an identifier, read the sent message back through your email tool
+Always read the sent message back (and for anything formal or quoting an identifier, with extra care) through your email tool
 and check it:
 
 | The body you read back shows | Meaning |
 |---|---|
 | Rendered text, no tags | Correct |
 | `<div`, `<p>` or `dir=` as visible text | Escaped-HTML bug: send it again, correctly |
+| `dir="rtl"` or `text-align:right` missing from a Hebrew paragraph, or the signature not in a `dir="ltr"` block | Direction lost: fix and resend |
+| Numbers, dates, phone numbers or URLs out of order | Bidi bug: wrap in `dir="ltr"` spans, fix and resend |
 | Your HTML source, not rendered | Sent as plain text: the HTML flag was dropped |
 
 ## A letter attached as a PDF

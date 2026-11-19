@@ -41,12 +41,14 @@ with the business variant. In summary:
    "I hope this email finds you well" has no natural Hebrew equivalent.
 4. `dir="rtl"` on every block; `<span dir="ltr">` around every multi-part number.
    See `references/bidi-rules.md`.
-5. Preview with `./scripts/preview.sh` and look at it.
+5. Preview with `./scripts/preview.sh` and check it yourself; do not ask the user to approve it unless they asked to review.
 6. Send through the Gmail API with **`body_format: "html"`**. Omitting it undoes
    everything above. Only if Gmail fails, send through Resend as `html`.
    **On Resend, BCC the profile's own email address** on every message unless it is
    already a recipient. Resend sends never appear in a Gmail Sent folder, so the BCC
    is the user's only copy to proof the render.
+
+7. Sending follows `rtl-email` "Sending": send when what to say is clear, no draft or confirmation step unless the user asked to review; blockers are an unverified address, a fact only the user can supply, a leftover placeholder. Then read the sent message back and report recipient, subject and message id in one line.
 
 ## Do not
 
@@ -55,7 +57,7 @@ with the business variant. In summary:
   `&lt;div dir="rtl"&gt;`. Escaped markup sends without error and renders as
   visible tags in the recipient's window. This has happened in real
   correspondence — see `references/composing.md`.
-- **Send anything formal without reading the message back.** One
+- **Send anything without reading the message back** (`dir` attributes survived, numbers, dates, phones and URLs in order; if broken, fix and resend). One
   `get_gmail_message_content` call on the returned ID catches both the
   escaping bug and a dropped `body_format` in ten seconds. That is the exact
   failure this plugin was built from: the guidance existed, nothing routed the

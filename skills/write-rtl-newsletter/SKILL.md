@@ -40,8 +40,7 @@ send.** For one-to-one mail use `send-rtl-personal-email` or
   Lower-case tags pass the lint.
 - If a platform takes a body only, keep the `<table dir="rtl">` wrapper. Some strip
   `<html>` and `<body>`, which is why `dir` is on every table and cell.
-- Sending to a list is outward-facing: confirm the recipients and the final render
-  with the user first.
+- Sending to a list: when the user has asked for the mailing and the list and content are clear, send it without a separate confirmation step; hold for review only when the user asks. A list you cannot verify or a leftover placeholder blocks the send. Read a sent message back and check the `dir` attributes survived.
 
 ## Israeli rules for advertising mail
 
