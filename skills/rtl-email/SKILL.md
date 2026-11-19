@@ -87,6 +87,11 @@ and check it:
 | Numbers, dates, phone numbers or URLs out of order | Bidi bug: wrap in `dir="ltr"` spans, fix and resend |
 | Your HTML source, not rendered | Sent as plain text: the HTML flag was dropped |
 
+Check the **subject** too. A Hebrew subject is sent as an encoded header, and some send paths drop a space where that
+header is folded: "של ירושלים" arrives as "שלירושלים" (seen with the Gmail API, 2026-11). Keep Hebrew subjects short
+(about 40 characters or less) to stay under the fold, and if a word pair has merged, fix it before the next send. A
+merged subject word alone is usually not worth a resend.
+
 ## A letter attached as a PDF
 
 When the real letter travels as a PDF, keep the email body to a few plain lines
