@@ -167,6 +167,9 @@
   labels: (:),
   is-rtl: false,
   image-path: sys.inputs.at("sig", default: none),
+  // A statement is signed "as of" a moment: pass the date and time as content
+  // (e.g. a dual-date plus "14:30") and it prints under the contact lines.
+  dated: none,
 ) = {
   block(breakable: false)[
     #set text(dir: if is-rtl { rtl } else { ltr })
@@ -191,6 +194,7 @@
       #sender.phone \
       #sender.email
       #if ref != none [\ #labels.ours #ref]
+      #if dated != none [\ #dated]
     ]
   ]
 }
@@ -201,12 +205,22 @@
 // throat-clearing about which text governs reads as apologetic and invites the
 // reader to weigh the document's provenance instead of its contents. A standing
 // footer line states the same fact once per page and argues with nobody.
+//
+// `footer-title: true` puts the document title in the footer in place of the
+// sender's phone and email: for a statement or annex that travels on its own
+// and gets printed, so every loose page says what it belongs to.
+// `confidential` is a handling line ("Private and confidential, for the
+// intended recipients only"), printed in bold on every page; pass
+// `strings.confidential` or your own wording. Both default off, so existing
+// letters render unchanged.
 #let formal-doc(
   lang: "he",
   is-rtl: true,
   title: none,
   strings: (:),
   footer-note: none,
+  footer-title: false,
+  confidential: none,
   body,
 ) = {
   set document(title: title, author: sender.name)
@@ -220,13 +234,19 @@
       set text(size: 8pt, fill: muted, dir: if is-rtl { rtl } else { ltr })
       line(length: 100%, stroke: 0.4pt + rule)
       v(4pt)
-      let reach = sender.phone + " · " + sender.email
+      let reach = if footer-title and title != none { title } else {
+        sender.phone + " · " + sender.email
+      }
       let folio = (strings.page-of)(n, total)
       // Mirrored so the folio always sits on the outer edge.
       if is-rtl {
         grid(columns: (1fr, auto), align: (right, left), reach, folio)
       } else {
         grid(columns: (1fr, auto), align: (left, right), reach, folio)
+      }
+      if confidential != none {
+        v(2pt)
+        align(if is-rtl { right } else { left }, text(weight: "bold")[#confidential])
       }
       if footer-note != none {
         v(2pt)

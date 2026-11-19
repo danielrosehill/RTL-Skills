@@ -21,6 +21,8 @@
   cc: "העתק",
   subject: "הנדון",
   enclosures: "מסמכים מצורפים",
+  annex: "נספח",
+  confidential: "פרטי וחסוי – מיועד לנמענים בלבד",
   page-of: (n, total) => "עמוד " + str(n) + " מתוך " + str(total),
 )
 
@@ -36,5 +38,7 @@
   cc: "Copy",
   subject: "Re",
   enclosures: "Enclosures",
+  annex: "Annex",
+  confidential: "Private and confidential – for the intended recipients only",
   page-of: (n, total) => "Page " + str(n) + " of " + str(total),
 )

@@ -54,3 +54,22 @@ it before adapting a template.
 
 The neutral names (`doc-head`, `details`, `subject-line`) are deliberate. Keep them,
 and keep the bundled sample a request to a fictional company.
+
+## Two templates
+
+| Template | Use for |
+|---|---|
+| `letter-he.typ` | A letter to one addressee asking for something (complaint, request, FOI) |
+| `statement-he.typ` | A signed personal statement for circulation ("my position as of this date"), addressed לכל מאן דבעי, with an annex in the same PDF |
+
+Options on `formal-doc` and `signature` (all default off, so older letters render unchanged):
+
+- `footer-title: true`: the footer shows the document title instead of phone and email.
+- `confidential: s.confidential`: a bold handling line on every page ("פרטי וחסוי – מיועד
+  לנמענים בלבד" / "Private and confidential – for the intended recipients only").
+- `signature(dated: [...])`: a signed-on date and time under the signature.
+- `s.annex` is the word for an annex heading ("נספח" / "Annex"). Put the annex after
+  `#pagebreak()` in the same file so "page N of M" counts the whole bundle.
+
+An English edition uses the same files with `lang: "en"`, `is-rtl: false` and
+`strings.en`; the page furniture is identical.
