@@ -19,6 +19,7 @@ skills set the right switch on each surface and check that it took.
 | `send-rtl-personal-email` | Personal RTL email, signed from your profile |
 | `send-rtl-business-email` | Formal RTL email, signed from your profile |
 | `read-rtl-correspondence` | Incoming `.eml` or `.mbox` to a threaded PDF or Markdown |
+| `read-israeli-forms` | Scanned Israeli forms (Tabu, Form 106, Bituach Leumi) to checked data; Tabu to spreadsheet. Hosted OCR, no heavy local jobs |
 | `verify-rtl-render` | Catches the silent font substitutions a Typst exit code hides |
 | `rtl-basics` | Core rules: direction per block, isolating numbers, Israeli conventions |
 | `rtl-email` | Email rules for any mail tool |
@@ -58,5 +59,7 @@ Hebrew codepoint, so only the embedded font list shows it. See
 
 David Libre is included under the SIL Open Font License 1.1. The letter template comes
 from [Typst-Hebrew-Letter](https://github.com/danielrosehill/Typst-Hebrew-Letter).
+
+Skills adapted from third parties are listed in [`THIRD_PARTY.md`](THIRD_PARTY.md).
 
 MIT licence.
