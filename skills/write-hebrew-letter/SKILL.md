@@ -43,6 +43,19 @@ is plain; banks, insurers, regulators, municipalities and government offices get
 reference identifiers repeated in the sign-off. Details and stock phrasing in
 `references/register-hebrew-letters.md`.
 
+## Legal-style letters (demand letters)
+
+For a letter that may be exhibited later (demand for information or action, sent
+registered, "מבלי לפגוע בכל זכות או טענה"), follow
+`references/legal-correspondence-hebrew.md`:
+- lettered sections, and **numbered paragraphs (סעיפים) running continuously** through the whole letter;
+- הח"מ in the third person;
+- cite statutes by **סעיף** and regulations by **תקנה**;
+- a deadline counted from receipt, and the reservation-of-rights close;
+- address to the registered office with the care-of line.
+
+It also covers the Typst traps: restarting enum numbering, reversed ranges, an orphaned signature.
+
 ## Identity
 
 `paths.sh stage-typst` brings in `<data dir>/typst/sender.typ` when there is one. If
